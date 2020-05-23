@@ -1,3 +1,4 @@
+import os
 import pathlib
 
 import pytest
@@ -27,5 +28,4 @@ def test_symlink_deep_loop(tmp_path):
     slink.symlink_to(target, False)
     plink = tmp_path / "src" / "parent"
     plink.symlink_to(tmp_path / "src", False)
-    with pytest.raises(OSError):
-        walk(tmp_path / 'src')
+    walk(tmp_path / 'src')
